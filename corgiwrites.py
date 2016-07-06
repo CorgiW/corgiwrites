@@ -1,4 +1,6 @@
+
 from flask import (
+    abort
     Flask,
     flash,
     g,
@@ -33,8 +35,14 @@ def front():
 
 @app.route('/login', methods=['GET', 'POST'])
 def login():
+    #This is meant to redirect an already logged in user to the dashboard if they go onto this page. Not sure if right though
+    if session['is_logged_in'] = True
+        flash.message = "You are already logged in"
+        return redirect('/dashboard')
+
     if request.method == 'GET':
         # display the login form
+
     else:
         username = request.form.get('username', None)
         password = request.form.get('password', None)
@@ -135,8 +143,12 @@ def view_story(story_id):
     if story is None:
         # TODO corgiw - find out how to show the user a 404 page
         # return a 404
+
+        #Will need to finish the templates I think
+        abort(404)
     if story.owner.username is not session['username']:
         # return a 404
+        abort(404)
     # show the user the story
 
 # First thing to do, make this route only take POST requests
@@ -144,6 +156,7 @@ def view_story(story_id):
 def update_story_wordcount():
     if user not logged_in:
         # redirect to the login page
+<<<<<<< HEAD
         return
     # fetch two things from the form:
     #   the story id
@@ -156,6 +169,15 @@ def update_story_wordcount():
     # save the story
     # redirect to the story's page
 
+=======
+        return.redirect('\login')
+        # get the current wordcount list
+        wordcount = models.Story.wordcounts.get
+        # get the new wordcount from the user
+        # append the new worcount to the list
+        # return to the story display
+    pass
+>>>>>>> d460b25be4a9113758e8d689d844f4aabb6f6243
 
 @app.route('/market/create', methods=['GET', 'POST'])
 def create_market():
@@ -181,9 +203,9 @@ def create_market():
             market.expires = datetime.date(year, month, day)
         # save the information to the database
         market.save()
-        # send the user to the market page
+        # Send the user to the market ID
         # TODO corgiw use the proper market ID here
-        return redirect('/market/fakemarketid')
+        return redirect('/market/<market_id>')
 
 @app.route('/market/view/<market_id>')
 def view_market(market_id):
@@ -229,19 +251,31 @@ def submit_story():
         user.save()
         # redirect to the story page
         return redirect('/story/fakestoryid')
-    flash.message = "We couldn't find that market!"
+    else
+        flash.message = "We couldn't find that market!"
     # TODO corgiw use the proper story ID here
-    return redirect('/story/fakestoryid')
+        return redirect('/story/<story_id')
 
-@app.route('/submission/<int:submission_id>')
+
+@app.route('/submission/<submission_id>', methods=['POST'])
 def update_submission(submission_id):
-    if user not logged_in:
+    if not session['is_logged_in']:
         # redirect to the login page
-        return
+        return redircet('/login')
     # get the submission from the database
+    submission_exists = models.Submission.objects.get(id=submission_id)
+    if submission_exists is None:
+        abort(404)
     # change the submission status
+    else:
+        submission = models.Submission
+        new_status = request.form.get('status', None)
+        submission.status = new_status
     # save the submission back to the database
+        submission.save()
     # redirect to the story page
+        flash.message = "Story submission has been updated"
+        return.redirect("/story/view")
 
 @app.route('/dashboard')
 def dashboard():
