@@ -156,20 +156,6 @@ def view_story(story_id):
 def update_story_wordcount():
     if user not logged_in:
         # redirect to the login page
-<<<<<<< HEAD
-        return
-    # fetch two things from the form:
-    #   the story id
-    #   the next wordcount
-    # both are required, make sure they're not None, throw an error if so
-    # fetch the story from the database using the story id
-    # create a new wordcount object
-    # set the wordcount on that object
-    # append the object to the story's wordcount list
-    # save the story
-    # redirect to the story's page
-
-=======
         return.redirect('\login')
         # get the current wordcount list
         wordcount = models.Story.wordcounts.get
@@ -177,7 +163,6 @@ def update_story_wordcount():
         # append the new worcount to the list
         # return to the story display
     pass
->>>>>>> d460b25be4a9113758e8d689d844f4aabb6f6243
 
 @app.route('/market/create', methods=['GET', 'POST'])
 def create_market():
