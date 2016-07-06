@@ -139,12 +139,23 @@ def view_story(story_id):
         # return a 404
     # show the user the story
 
+# First thing to do, make this route only take POST requests
 @app.route('/story/wordcount/update')
 def update_story_wordcount():
     if user not logged_in:
         # redirect to the login page
         return
-    pass
+    # fetch two things from the form:
+    #   the story id
+    #   the next wordcount
+    # both are required, make sure they're not None, throw an error if so
+    # fetch the story from the database using the story id
+    # create a new wordcount object
+    # set the wordcount on that object
+    # append the object to the story's wordcount list
+    # save the story
+    # redirect to the story's page
+
 
 @app.route('/market/create', methods=['GET', 'POST'])
 def create_market():
