@@ -157,12 +157,28 @@ def update_story_wordcount():
     if user not logged_in:
         # redirect to the login page
         return.redirect('\login')
-        # get the current wordcount list
-        wordcount = models.Story.wordcounts.get
-        # get the new wordcount from the user
-        # append the new worcount to the list
-        # return to the story display
-    pass
+    # fetch two things from the form:
+        #   the story id
+        story_update = request.form.get('story', None)
+        #   the next wordcount
+        new_wc = request.form.get('story', None)
+    # both are required, make sure they're not None, throw an error if so
+    if story_update = None, or new_wc = None:
+        flash.message = "The story and the new wordcount are required"
+    # fetch the story from the database using the story id
+    story = models.object.Story.get(id=story_update)
+    # create a new wordcount object
+    wc = models.WordCountEntry()
+    # set the wordcount on that object
+    #TODO Make it so that if the user enters in text instead of a number, the programme can handle that
+    wc.wordcount = int(new_wc)
+    # append the object to the story's wordcount list
+    story.wordcounts.append(wc)
+    # save the story
+    story.save()
+    # redirect to the story's page
+    return redircet('\story\<story_id>')
+
 
 @app.route('/market/create', methods=['GET', 'POST'])
 def create_market():
