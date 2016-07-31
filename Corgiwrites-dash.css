@@ -6,21 +6,27 @@ body{
 .header_background{
   text-align: center;
   background-color: #62007D;
-  border-radius: 0px 0px 25px 0px;
   position: fixed;
   width: 100%;
   height: 20%;
   display: block;
   position: fixed;
   z-index: 5;
+  border-color: #9A0CC1;
+  border-radius: 0px 0px 25px 0px;
+  border-style: solid;
+  border-width: 0px 0px 2px 0px;
+  float: left;
+  font-family: Georgia;
 }
 
 .header h1{
   text-align: left;
   margin-bottom: 25px;
   margin-left: 60px;
-  color: #FFD361;
-  font-family: Arial;
+  padding-bottom: 2%;
+  color: #D3A2E0;
+  font-family: Verdana;
 }
 
 .header_b{
@@ -31,30 +37,34 @@ body{
   position: relative;
   width: 20%;
   height: 30%;
-  color: #FFD361;
+  color: #D3A2E0;
   border-radius: 5px;
   text-decoration: none;
   font-size: 20px;
-  padding-top: 20px;
+  padding-top: 10px;
   padding-left: 15px;
-  padding-right: 15px
+  padding-right: 15px;
+  padding-bottom: 10px;
 }
 
 .header_b:hover{
   background-color: #BA4ED7;
-  border-radius: 100px;
+  border-radius: 25px;
 
 
 }
 
 .timeline_background{
   text-align: center;
-  background-color: #F0BF41;
-  border-radius: 0px 0px 25px 25px;
+  background-color: #F6C855;
+  border-radius: 0px 0px 10px 25px;
+  border-color: #FFD361;
+  border-style: solid;
+  border-width: 0px 0px 2px 0px;
   position: fixed;
   width: 85%;
   height: 15%;
-  z-index: 1;
+  z-index: 2;
   margin-left: 15%;
   margin-top: 10%;
 }
@@ -63,13 +73,26 @@ body{
   text-align: left;
   position: relative;
   margin-left: 5%;
+  color: #62007D;
+  text-decoration: underline;
 }
 
 .timeline_b{
   position: relative;
   display: inline-block;
-  margin-left: 20px;
-  margin-top: 30px;
+  padding-left: 5%;
+  padding-right: 5%;
+  padding-bottom: 1%;
+  padding-top: 1%;
+  margin-top: 5px;
+  text-decoration: none;
+  color: #62007D;
+
+}
+
+.timeline_b:hover{
+  background-color: #F9DA8C;
+  border-radius: 30px;
 
 }
 
@@ -79,12 +102,16 @@ body{
   height: 100%;
   width: 15%;
   z-index: 3;
+  border-style: solid;
+  border-width: 0px 2px 0px 0px;
+  border-color: #EDB7FC;
+  float: left;
 }
 
 .side_b{
   display: block;
   position: relative;
-  color: #5D4300;
+  color: #62007D;
   float: left;
   margin-left: 5%;
   margin-right: 50%;
@@ -92,7 +119,9 @@ body{
   text-decoration: none;
   border-radius: 5px;
   padding: 15px;
-  padding-right: 20px;
+  padding-left: 10%;
+  padding-right: 30%;
+  border-radius: 15px;
 }
 
 .side_b:hover{
@@ -102,5 +131,10 @@ body{
 #top_b_time{
   margin-top: 250px;
   position: relative;
+}
+
+.footer{
+
+}
 
 }
